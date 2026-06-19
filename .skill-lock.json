@@ -1,0 +1,55 @@
+{
+  "version": 3,
+  "skills": {
+    "search": {
+      "source": "tavily-ai/skills",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/tavily-ai/skills.git",
+      "skillPath": "skills/tavily/search/SKILL.md",
+      "skillFolderHash": "",
+      "installedAt": "2026-02-22T09:16:51.242Z",
+      "updatedAt": "2026-02-22T09:16:51.242Z"
+    },
+    "find-skills": {
+      "source": "vercel-labs/skills",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/vercel-labs/skills.git",
+      "skillPath": "skills/find-skills/SKILL.md",
+      "skillFolderHash": "",
+      "installedAt": "2026-03-09T23:30:06.436Z",
+      "updatedAt": "2026-03-09T23:30:06.436Z"
+    },
+    "weather-query": {
+      "source": "vikiboss/60s-skills",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/vikiboss/60s-skills.git",
+      "skillPath": "skills/weather-query/SKILL.md",
+      "skillFolderHash": "",
+      "installedAt": "2026-03-10T00:12:01.056Z",
+      "updatedAt": "2026-03-10T00:12:01.056Z"
+    },
+    "baoyu-translate": {
+      "source": "jimliu/baoyu-skills",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/jimliu/baoyu-skills.git",
+      "skillPath": "skills/baoyu-translate/SKILL.md",
+      "skillFolderHash": "",
+      "pluginName": "utility-skills",
+      "installedAt": "2026-03-10T00:14:44.163Z",
+      "updatedAt": "2026-03-10T00:14:44.163Z"
+    }
+  },
+  "dismissed": {
+    "findSkillsPrompt": true
+  },
+  "lastSelectedAgents": [
+    "amp",
+    "cline",
+    "codex",
+    "cursor",
+    "gemini-cli",
+    "github-copilot",
+    "kimi-cli",
+    "opencode"
+  ]
+}
