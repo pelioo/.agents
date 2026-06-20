@@ -1,0 +1,24 @@
+{
+  "_comment": "数据监控面板模板：指标卡片行 + 待办清单。适合监控 + 行动项组合场景。",
+  "_usage": "MetricCard trend/trendDirection 配合使用；ChecklistItem checked 表达完成状态",
+  "messages": [
+    {"updateComponents": {"surfaceId": "main", "components": [
+      {"id": "monitor", "component": "Card", "title": "{{PANEL_TITLE}}", "children": ["metrics-row", "checklist"]},
+      {"id": "metrics-row", "component": "Row", "gap": 12, "children": ["mc-1", "mc-2", "mc-3"]},
+      {"id": "mc-1", "component": "MetricCard",
+       "value": "{{METRIC_1_VALUE}}", "label": "{{METRIC_1_LABEL}}",
+       "trend": "{{METRIC_1_TREND}}", "trendDirection": "{{METRIC_1_DIRECTION}}"},
+      {"id": "mc-2", "component": "MetricCard",
+       "value": "{{METRIC_2_VALUE}}", "label": "{{METRIC_2_LABEL}}",
+       "trend": "{{METRIC_2_TREND}}", "trendDirection": "{{METRIC_2_DIRECTION}}"},
+      {"id": "mc-3", "component": "MetricCard",
+       "value": "{{METRIC_3_VALUE}}", "label": "{{METRIC_3_LABEL}}",
+       "trend": "{{METRIC_3_TREND}}", "trendDirection": "{{METRIC_3_DIRECTION}}"},
+      {"id": "checklist", "component": "List", "title": "{{CHECKLIST_TITLE}}",
+       "children": ["cl-1", "cl-2", "cl-3"]},
+      {"id": "cl-1", "component": "ChecklistItem", "text": "{{ITEM_1_TEXT}}", "checked": false},
+      {"id": "cl-2", "component": "ChecklistItem", "text": "{{ITEM_2_TEXT}}", "checked": false},
+      {"id": "cl-3", "component": "ChecklistItem", "text": "{{ITEM_3_TEXT}}", "checked": false}
+    ]}}
+  ]
+}

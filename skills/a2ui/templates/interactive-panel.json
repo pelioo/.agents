@@ -1,0 +1,16 @@
+{
+  "_comment": "交互操作面板模板。用户点击按钮后 Agent 收到 [User Action] 事件。",
+  "_usage": "按钮 action.event.name 应在 SKILL.md 'Action 事件处理' 段注册语义化名称",
+  "messages": [
+    {"updateComponents": {"surfaceId": "main", "components": [
+      {"id": "actions", "component": "Card", "title": "{{PANEL_TITLE}}", "children": ["btn-group"]},
+      {"id": "btn-group", "component": "ButtonGroup", "children": ["btn-{{ACTION_1_ID}}", "btn-{{ACTION_2_ID}}"]},
+      {"id": "btn-{{ACTION_1_ID}}", "component": "Button",
+       "label": "{{ACTION_1_LABEL}}", "variant": "primary", "icon": "{{ACTION_1_ICON}}",
+       "action": {"event": {"name": "{{ACTION_1_EVENT}}"}}},
+      {"id": "btn-{{ACTION_2_ID}}", "component": "Button",
+       "label": "{{ACTION_2_LABEL}}", "variant": "secondary", "icon": "{{ACTION_2_ICON}}",
+       "action": {"event": {"name": "{{ACTION_2_EVENT}}"}}}
+    ]}}
+  ]
+}

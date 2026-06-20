@@ -1,0 +1,22 @@
+{
+  "_comment": "看板/监控面板模板。复制此文件，修改组件 ID、metrics、activity items。",
+  "_usage": "a2ui_render(messages=[...]) 或作为 updateComponents 的 components 字段",
+  "messages": [
+    {"createSurface": {"surfaceId": "main", "catalogId": "cteno/v1"}},
+    {"updateComponents": {"surfaceId": "main", "components": [
+      {"id": "root", "component": "Container", "children": ["status", "main-card"]},
+      {"id": "status", "component": "StatusIndicator", "status": "active", "text": "运行中"},
+      {"id": "main-card", "component": "Card", "title": "{{DASHBOARD_TITLE}}", "children": ["progress", "metrics", "feed"]},
+      {"id": "progress", "component": "Progress", "value": 0.52, "label": "总进度 52%"},
+      {"id": "metrics", "component": "MetricsGrid", "metrics": {
+        "{{METRIC_1_LABEL}}": "{{METRIC_1_VALUE}}",
+        "{{METRIC_2_LABEL}}": "{{METRIC_2_VALUE}}",
+        "{{METRIC_3_LABEL}}": "{{METRIC_3_VALUE}}"
+      }},
+      {"id": "feed", "component": "ActivityFeed", "items": [
+        {"text": "{{ACTIVITY_1_TEXT}}", "timestamp": "{{ACTIVITY_1_TIME}}"},
+        {"text": "{{ACTIVITY_2_TEXT}}", "timestamp": "{{ACTIVITY_2_TIME}}"}
+      ]}
+    ]}}
+  ]
+}

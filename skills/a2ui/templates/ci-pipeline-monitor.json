@@ -1,0 +1,75 @@
+{
+  "name": "ci-pipeline-monitor",
+  "description": "CI/CD 流水线监控面板模板。展示流水线状态、构建进度、阶段指标、最近活动与操作按钮。支持 updateDataModel 增量刷新。",
+  "catalogId": "cteno/v1",
+  "messages": [
+    {
+      "createSurface": {
+        "surfaceId": "ci-pipeline",
+        "catalogId": "cteno/v1"
+      }
+    },
+    {
+      "updateComponents": {
+        "surfaceId": "ci-pipeline",
+        "components": [
+          {"id": "root", "component": "Container", "children": ["header", "pipeline-card"]},
+          {"id": "header", "component": "Row", "gap": 12, "children": ["status", "branch-badge", "build-badge"]},
+          {"id": "status", "component": "StatusIndicator", "status": "active", "text": "构建中"},
+          {"id": "branch-badge", "component": "Badge", "label": "main", "variant": "info"},
+          {"id": "build-badge", "component": "Badge", "label": "#1247", "variant": "neutral"},
+          {"id": "pipeline-card", "component": "Card", "title": "流水线 · 后端 API 服务", "children": ["progress", "stage-row", "metrics", "feed", "actions"]},
+          {"id": "progress", "component": "Progress", "value": "${pipeline.progress}", "label": "总体进度 ${pipeline.stage} · 已耗时 ${pipeline.elapsed}"},
+          {"id": "stage-row", "component": "Row", "gap": 8, "children": ["s1", "s2", "s3", "s4", "s5"]},
+          {"id": "s1", "component": "StatusIndicator", "status": "success", "text": "Lint"},
+          {"id": "s2", "component": "StatusIndicator", "status": "success", "text": "单元测试"},
+          {"id": "s3", "component": "StatusIndicator", "status": "active", "text": "构建镜像"},
+          {"id": "s4", "component": "StatusIndicator", "status": "pending", "text": "集成测试"},
+          {"id": "s5", "component": "StatusIndicator", "status": "pending", "text": "部署预发"},
+          {"id": "metrics", "component": "MetricsGrid", "metrics": {
+            "通过率": "${metrics.pass_rate}",
+            "平均耗时": "${metrics.avg_duration}",
+            "队列任务": "${metrics.queue}",
+            "失败构建": "${metrics.failed}"
+          }},
+          {"id": "feed", "component": "ActivityFeed", "items": "${feed.items}"},
+          {"id": "actions", "component": "ButtonGroup", "children": ["btn-retry", "btn-cancel", "btn-logs"]},
+          {"id": "btn-retry", "component": "Button", "label": "重试失败任务", "variant": "primary", "icon": "refresh", "action": {"event": {"name": "retry_failed"}}},
+          {"id": "btn-cancel", "component": "Button", "label": "取消构建", "variant": "danger", "icon": "x", "action": {"event": {"name": "cancel_build"}}},
+          {"id": "btn-logs", "component": "Button", "label": "查看日志", "variant": "secondary", "icon": "file", "action": {"event": {"name": "view_logs"}}}
+        ]
+      }
+    },
+    {
+      "updateDataModel": {
+        "surfaceId": "ci-pipeline",
+        "data": {
+          "pipeline": {
+            "progress": 0.62,
+            "stage": "构建镜像",
+            "elapsed": "3m 42s"
+          },
+          "metrics": {
+            "pass_rate": "96.4%",
+            "avg_duration": "4m 18s",
+            "queue": 3,
+            "failed": 1
+          },
+          "feed": {
+            "items": [
+              {"text": "代码检出完成", "timestamp": "10:42:01"},
+              {"text": "ESLint 通过（0 warnings）", "timestamp": "10:42:38"},
+              {"text": "单元测试 482/482 通过", "timestamp": "10:43:55"},
+              {"text": "Docker 镜像构建中…", "timestamp": "10:45:12"}
+            ]
+          }
+        }
+      }
+    }
+  ],
+  "action_handlers": {
+    "retry_failed": "重新触发失败阶段，保留已通过的步骤",
+    "cancel_build": "取消当前构建并释放 runner",
+    "view_logs": "拉取当前阶段的执行日志"
+  }
+}

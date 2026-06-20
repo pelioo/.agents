@@ -1,0 +1,7 @@
+{
+  "_comment": "空白 surface 初始化模板。创建渲染面后逐步添加组件，或在后续 updateComponents 中扩展。",
+  "_usage": "首次渲染必须用此模板；后续纯增量更新不需要重发 createSurface",
+  "messages": [
+    {"createSurface": {"surfaceId": "{{SURFACE_ID}}", "catalogId": "cteno/v1"}}
+  ]
+}
