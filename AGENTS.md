@@ -1,14 +1,14 @@
 # Repository Guidelines
 
-This repository hosts a curated collection of **agent skills** — self-contained capability packages that extend an agent's workflows, tools, and reference material. Each skill lives in `skills/<skill-name>/` and is loaded by name.
+This repository hosts a curated collection of **agent skills** — self-contained capability packages that extend an agent's workflows, tools, and reference material. Each skill lives in `skills/<skill-name>/` and is loaded by name. The library is **user-level** and follows the [Agent Skills open standard](https://agentskills.io): any agent runtime that reads `name` + `description` from the frontmatter, loads `SKILL.md` body on trigger, and pulls in `references/` / `scripts/` / `templates/` / `assets/` on demand can consume these skills. A small subset of skills is platform-specific (e.g. `create-extension` for OpenCowork, `create-gsd-extension` for GSD) — those are flagged in their own `SKILL.md`.
 
 ---
 
 ## Project Overview
 
 - **Purpose**: Distribute, version, and validate agent skills (prompt + script bundles) that downstream agents discover and invoke by `name`.
-- **Domain**: OpenCowork / Claude-style agent platform. Skills are referenced from the frontmatter `name` field at runtime; only `SKILL.md` is loaded by default, with subdirectory content loaded on demand.
-- **Scale**: 72 skills under `skills/` as of last inventory (`ls -d skills/*/`).
+- **Domain**: Framework-agnostic user-level skill library, conformant with the [Agent Skills open standard](https://agentskills.io). Skills are referenced from the frontmatter `name` field at runtime; only `SKILL.md` is loaded by default, with subdirectory content loaded on demand. The `.skill-lock.json` `lastSelectedAgents` field lists agent runtimes that have been observed installing from this repo (e.g. Claude Code, Cursor, Cline, Codex, Gemini CLI, GitHub Copilot, Kimi CLI, opencode) — the list is informational, not a domain restriction.
+- **Scale**: Grows over time; see `ls -d skills/*/` for the current inventory.
 - **Source mix**: Skills are authored both locally and pulled from upstream repos (e.g. `tavily-ai/skills`, `vercel-labs/skills`, `jimliu/baoyu-skills`); see `.skill-lock.json` for tracked installations.
 
 ## Architecture & Data Flow
