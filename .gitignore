@@ -4,3 +4,4 @@ __pycache__/
 *.pyo
 
 .bitfun/
+/.bitfun/search/flashgrep-index/
