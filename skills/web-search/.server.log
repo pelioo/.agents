@@ -1,0 +1,54 @@
+
+[Bridge Server] Started on http://127.0.0.1:8923
+[Bridge Server] Health check: http://127.0.0.1:8923/api/health
+
+
+[Bridge Server] Started on http://127.0.0.1:8923
+[Bridge Server] Health check: http://127.0.0.1:8923/api/health
+
+
+[Bridge Server] Started on http://127.0.0.1:8923
+[Bridge Server] Health check: http://127.0.0.1:8923/api/health
+
+
+[Bridge Server] Started on http://127.0.0.1:8923
+[Bridge Server] Health check: http://127.0.0.1:8923/api/health
+
+
+[Bridge Server] Started on http://127.0.0.1:8923
+[Bridge Server] Health check: http://127.0.0.1:8923/api/health
+
+[API] GET /api/health
+[API] POST /api/browser/connect
+[Browser] Launching Chrome at: C:\Program Files\Google\Chrome\Application\chrome.exe
+[Browser] CDP port: 9222
+[Browser] User data dir: C:\Users\peli\AppData\Local\Temp\chrome-cdp-1785687560942-ffcaa31c
+[Browser] Headless: false
+[Browser] Flags: --no-first-run --no-default-browser-check --disable-background-timer-throttling --disable-backgrounding-occluded-windows --disable-renderer-backgrounding
+[Browser] Chrome started with PID: 8584
+[Browser stderr] DevTools listening on ws://127.0.0.1:9222/devtools/browser/5bc51370-6900-4008-988a-c0df647e2e80
+[Browser] CDP ready after 2 attempts (512ms)
+[Browser] CDP ready on port 9222
+[Playwright] Connecting to CDP on port 9222
+[Playwright] CDP WebSocket URL: ws://127.0.0.1:9222/devtools/browser/5bc51370-6900-4008-988a-c0df647e2e80
+[Playwright] Connected to browser
+[Playwright] Using existing context
+[Playwright] Connection established: 16d678a4-c89e-4d04-a299-76c0d77ef0c2
+[Browser stderr] [8584:34912:0803/001923.799:ERROR:chrome\browser\ui\webui\ntp\new_tab_ui.cc:54] Requested load of chrome://newtab/ for incorrect profile type.
+[API] POST /api/search
+[Search] Trying engine: google
+[Google] Searching for: "LobsterAI open source release" (max 3 results)
+[Playwright] Using existing page: chrome://new-tab-page/
+[Google] Navigating to: https://www.google.com/search?q=LobsterAI%20open%20source%20release&hl=en
+[Google] Page loaded: https://www.google.com/search?q=LobsterAI%20open%20source%20release&hl=en
+[Google] Search failed: Error: Google search results did not load in time
+    at GoogleSearch.search (C:\Users\peli\AppData\Roaming\LobsterAI\SKILLs\web-search\dist\server\search\google.js:51:23)
+    at async BridgeServer.searchWithFallback (C:\Users\peli\AppData\Roaming\LobsterAI\SKILLs\web-search\dist\server\index.js:444:28)
+[Search] Engine failed (google): Google search failed: Google search results did not load in time
+[Search] Trying engine: bing
+[Bing] Searching for: "LobsterAI open source release" (max 3 results)
+[Playwright] Using existing page: https://www.google.com/search?q=LobsterAI%20open%20source%20release&hl=en
+[Bing] Navigating to: https://www.bing.com/search?q=LobsterAI%20open%20source%20release
+[Bing] Page loaded: https://cn.bing.com/search?q=LobsterAI%20open%20source%20release
+[Bing] Search results found
+[Bing] Extracted 3 results in 3129ms
