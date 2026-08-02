@@ -5,3 +5,6 @@ __pycache__/
 
 .bitfun/
 /.bitfun/search/flashgrep-index/
+
+# 排除的文件夹
+tasks/*
