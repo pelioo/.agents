@@ -1,0 +1,5 @@
+{
+    "pendant.runtimeSource": "external",
+    "pendant.disableExtensionDiscovery": false,
+    "pendant.autoGenerateSessionNames": true
+}
