@@ -37,6 +37,24 @@
       "pluginName": "utility-skills",
       "installedAt": "2026-03-10T00:14:44.163Z",
       "updatedAt": "2026-03-10T00:14:44.163Z"
+    },
+    "archify": {
+      "source": "tt-a1i/archify",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/tt-a1i/archify.git",
+      "skillPath": "archify/SKILL.md",
+      "skillFolderHash": "2dafa540bb19ed1d2ea032b071b4f617036d5166b3575a24545bd626e3d8e499",
+      "installedAt": "2026-09-26T12:20:34.121Z",
+      "updatedAt": "2026-09-26T12:20:34.121Z"
+    },
+    "archify-review": {
+      "source": "tt-a1i/archify",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/tt-a1i/archify.git",
+      "skillPath": ".agents/skills/archify-review/SKILL.md",
+      "skillFolderHash": "ea17fd7a735f2e787defcc35d67f97908ddb7c5817220d6163a32998b4573f8f",
+      "installedAt": "2026-09-26T12:20:34.123Z",
+      "updatedAt": "2026-09-26T12:20:34.123Z"
     }
   },
   "dismissed": {
@@ -47,9 +65,13 @@
     "cline",
     "codex",
     "cursor",
+    "droid",
     "gemini-cli",
     "github-copilot",
-    "kimi-cli",
-    "opencode"
+    "kilo",
+    "kimi-code-cli",
+    "opencode",
+    "warp",
+    "zed"
   ]
 }
