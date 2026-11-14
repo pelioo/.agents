@@ -10,7 +10,13 @@
 - **权威编写指南**：`skills/skill-creator/SKILL.md` —— 新增技能前请通读全文。
 - **Schema 校验器（具体实现）**：`skills/skill-creator/scripts/quick_validate.py` 强制执行本仓库的**本地创作约定**（5 个 frontmatter 键）。`npx -y skills-ref validate` 强制执行**上游参考规范**（6 个键 —— 它额外接受 `compatibility`）。这是两套 schema，不是一套 —— 详见下文「SKILL.md frontmatter」。
 
----
+## Git 规范
+
+- **提交信息**：`<类型>(<范围>): <简短描述>`，类型 `feat`/`fix`/`docs`/`style`/`refactor`/
+  `perf`/`test`/`chore`。**署名**：正文末尾最后一行 `Provenance: agent(<名字> @<端口>)`
+  （多实例必须带端口，以区分是谁写的）。
+- 本仓**无 CI**（连 `.github/` 都没有）—— 门禁就是「验证过的命令」那节。提交前自查：
+  逻辑正确性 / 是否破坏现有测试 / 文档是否同步 / 是否引入不安全模式（`panic`、密钥泄漏）。
 
 ## 项目概览
 

@@ -66,7 +66,7 @@
 
 ## 为什么不做成单一长文件
 
-仓库规范（AGENTS.md 第 175 行）鼓励把长内容移到 references/，原因：
+仓库规范（AGENTS.md「SKILL.md 主体结构」一节）鼓励把长内容移到 references/，原因：
 
 1. **节省 token**：Agent 不需要的内容不进 context
 2. **更易维护**：单文件改动影响范围小
