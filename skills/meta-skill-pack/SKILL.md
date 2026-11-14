@@ -129,7 +129,7 @@ Pack body 的核心是路由表。建议结构：
 | `research-and-search` | 联网搜索、抓取、摘要 | `search` / `multi-search-engine` / `anysearch-skill` / `web-scraper` / `summarize` / `agent-reach` |
 | `content-and-blog` | 长文创作、博客、邮件 | `blog-author` / `copywriter` / `email-drafter` / `baoyu-translate` |
 | `design-and-frontend` | 前端 / UI / 设计 / 性能 | `frontend-design` / `frontend-skill` / `canvas-design` / `web-design-guidelines` / `web-quality-audit` / `make-interfaces-feel-better` / `userinterface-wiki` / `core-web-vitals` / `react-best-practices` / `accessibility` / `a2ui` / `nuxt-ui` / `product-design` |
-| `docs-and-office` | Office / PDF 文档 | `docx` / `xlsx` / `pptx` / `pdf` / `officeCLI` / `excel-processor` / `write-docs` / `explain-code` |
+| `docs-and-office` | Office / PDF 文档 | `docx` / `xlsx` / `pptx` / `pdf` / `office-cli` / `excel-processor` / `write-docs` / `explain-code` |
 | `dev-orchestration` | 编码工作流（写 / 测 / 审 / 重构） | `code` / `tdd` / `test` / `review` / `lint` / `debug-like-expert` / `dependency-upgrade` / `code-optimizer` / `refactor-expert` / `architecture` / `api-design` / `design-an-interface` / `design-by-contract` / `security-review` / `observability` / `verify-before-complete` / `create-plan` / `decompose-into-slices` / `write-milestone-brief` / `grill-me` / `handoff` / `best-practices` |
 | `platform-and-extensions` | 扩展 / MCP / 工作流 / skill 创建 | `create-extension` / `create-gsd-extension` / `create-mcp-server` / `create-workflow` / `create-skill` / `skill-creator` / `sap-extension-creator` |
 | `browser-and-automation` | 浏览器自动化 | `agent-browser` / `browser-automation` / `playwright-dev` |

@@ -14,10 +14,9 @@ Examples:
 import sys
 from pathlib import Path
 
-
 SKILL_TEMPLATE = """---
 name: {skill_name}
-description: [TODO: Complete and informative explanation of what the skill does and when to use it. Include WHEN to use this skill - specific scenarios, file types, or tasks that trigger it.]
+description: "[TODO: Complete and informative explanation of what the skill does and when to use it. Include WHEN to use this skill - specific scenarios, file types, or tasks that trigger it.]"
 ---
 
 # {skill_title}
@@ -227,7 +226,7 @@ def init_skill(skill_name, path):
 
     skill_md_path = skill_dir / 'SKILL.md'
     try:
-        skill_md_path.write_text(skill_content)
+        skill_md_path.write_text(skill_content, encoding='utf-8')
         print("✅ Created SKILL.md")
     except Exception as e:
         print(f"❌ Error creating SKILL.md: {e}")
@@ -239,7 +238,7 @@ def init_skill(skill_name, path):
         scripts_dir = skill_dir / 'scripts'
         scripts_dir.mkdir(exist_ok=True)
         example_script = scripts_dir / 'example.py'
-        example_script.write_text(EXAMPLE_SCRIPT.format(skill_name=skill_name))
+        example_script.write_text(EXAMPLE_SCRIPT.format(skill_name=skill_name), encoding='utf-8')
         example_script.chmod(0o755)
         print("✅ Created scripts/example.py")
 
@@ -247,14 +246,14 @@ def init_skill(skill_name, path):
         references_dir = skill_dir / 'references'
         references_dir.mkdir(exist_ok=True)
         example_reference = references_dir / 'api_reference.md'
-        example_reference.write_text(EXAMPLE_REFERENCE.format(skill_title=skill_title))
+        example_reference.write_text(EXAMPLE_REFERENCE.format(skill_title=skill_title), encoding='utf-8')
         print("✅ Created references/api_reference.md")
 
         # Create assets/ directory with example asset placeholder
         assets_dir = skill_dir / 'assets'
         assets_dir.mkdir(exist_ok=True)
         example_asset = assets_dir / 'example_asset.txt'
-        example_asset.write_text(EXAMPLE_ASSET)
+        example_asset.write_text(EXAMPLE_ASSET, encoding='utf-8')
         print("✅ Created assets/example_asset.txt")
     except Exception as e:
         print(f"❌ Error creating resource directories: {e}")
@@ -270,7 +269,18 @@ def init_skill(skill_name, path):
     return skill_dir
 
 
+def _configure_console():
+    """Consoles on Chinese Windows use cp936, which cannot encode the emoji
+    markers printed below. Replace unencodable characters instead of crashing."""
+    for stream in (sys.stdout, sys.stderr):
+        reconfigure = getattr(stream, "reconfigure", None)
+        if reconfigure is not None:
+            reconfigure(errors="replace")
+
+
 def main():
+    _configure_console()
+
     if len(sys.argv) < 4 or sys.argv[2] != '--path':
         print("Usage: init_skill.py <skill-name> --path <path>")
         print("\nSkill name requirements:")

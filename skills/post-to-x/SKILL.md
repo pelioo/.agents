@@ -1,4 +1,5 @@
 ---
+name: post-to-x
 description: 发布推文到 X.com (Twitter)，使用系统浏览器登录状态
 ---
 

@@ -147,7 +147,7 @@ flowchart LR
 
 ### 📄 文档与办公
 
-- `pdf`、`docx`、`xlsx`、`pptx`、`excel-processor`、`officeCLI`
+- `pdf`、`docx`、`xlsx`、`pptx`、`excel-processor`、`office-cli`
 - `image-ocr` —— 从图片提取文字
 - `wechat-ui-sender` —— 桌面微信消息发送
 - `post-to-x` —— X.com 推文发布
@@ -171,7 +171,7 @@ flowchart LR
 - `dispatching-parallel-agents`、`executing-plans`
 - `react-cognitive-loop`、`超能模式`
 - `doubt-driven-development`、`karpathy-guidelines`
-- `Self-Improving Agent` —— 自反思 / 自批评 / 自学习
+- `self-improving` —— 自反思 / 自批评 / 自学习
 - `btw` —— 不打断主线的快速旁问
 
 ### 🇨🇳 中文场景

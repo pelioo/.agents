@@ -1,16 +1,17 @@
 ---
-name: 浏览器页面操作自动化
+name: browser-automation
 description: 通过 CDP (Chrome DevTools Protocol) 直接编写和执行网页自动化脚本
-version: 3.0.0
-author: zal
-tags:
-  - browser-automation
-  - cdp
-  - chrome-devtools-protocol
-prerequisites:
-  - python3
-  - websockets (pip install websockets)
-  - Google Chrome
+metadata:
+  version: 3.0.0
+  author: zal
+  tags:
+    - browser-automation
+    - cdp
+    - chrome-devtools-protocol
+  prerequisites:
+    - python3
+    - websockets (pip install websockets)
+    - Google Chrome
 ---
 
 # 浏览器页面操作自动化
@@ -42,6 +43,18 @@ prerequisites:
 - 自定义事件监听或网络拦截（Fetch.enable）
 - 原生工具未覆盖的 CDP 命令
 - **原生 tool 与脚本不要混用**（端口冲突）：用脚本时指定 `--port 9322`
+
+---
+
+## 脚本模式前置依赖
+
+走 CDP 脚本路径前需要满足：
+
+| 依赖 | 说明 |
+|------|------|
+| Python 3 | 运行 `scripts/cdp.py` 与示例脚本 |
+| `websockets` | `scripts/cdp.py` 缺包时会在 import 阶段自动 `pip install`；离线或受限环境请先手动安装：`pip install websockets` |
+| Google Chrome | 硬依赖，`cdp.py` 按 macOS / Windows / Linux 路径查找；找不到时需自行安装 |
 
 ---
 

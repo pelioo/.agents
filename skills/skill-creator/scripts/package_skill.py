@@ -13,6 +13,7 @@ Example:
 import sys
 import zipfile
 from pathlib import Path
+
 from quick_validate import validate_skill
 
 
@@ -82,7 +83,18 @@ def package_skill(skill_path, output_dir=None):
         return None
 
 
+def _configure_console():
+    """Consoles on Chinese Windows use cp936, which cannot encode the emoji
+    markers printed below. Replace unencodable characters instead of crashing."""
+    for stream in (sys.stdout, sys.stderr):
+        reconfigure = getattr(stream, "reconfigure", None)
+        if reconfigure is not None:
+            reconfigure(errors="replace")
+
+
 def main():
+    _configure_console()
+
     if len(sys.argv) < 2:
         print("Usage: python utils/package_skill.py <path/to/skill-folder> [output-directory]")
         print("\nExample:")

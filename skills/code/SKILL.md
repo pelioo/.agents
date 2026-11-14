@@ -1,11 +1,19 @@
 ---
-name: Code
-slug: code
-version: 1.0.4
-homepage: https://clawic.com/skills/code
+name: code
 description: Coding workflow with planning, implementation, verification, and testing for clean software development.
-changelog: Improved description for better discoverability
-metadata: {"clawdbot":{"emoji":"💻","requires":{"bins":[]},"os":["linux","darwin","win32"]}}
+metadata:
+  slug: code
+  version: 1.0.4
+  homepage: https://clawic.com/skills/code
+  changelog: Improved description for better discoverability
+  clawdbot:
+    emoji: 💻
+    requires:
+      bins: []
+    os:
+      - linux
+      - darwin
+      - win32
 ---
 
 ## When to Use
