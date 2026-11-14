@@ -34,14 +34,14 @@
 
 ```mermaid
 flowchart LR
-    Agent[Agent runtime] -->|reads name + description| SKILL[SKILL.md frontmatter]
-    SKILL -->|triggers skill| Body[SKILL.md body]
-    Body -->|loads as needed| Refs[references/*.md]
-    Body -->|invokes| Scripts[scripts/*.py / *.mjs / *.sh]
-    Body -->|uses| Tmpl[templates/*]
-    Body -->|imports| Assets[assets/*]
-    Scripts -->|writes| Tasks[tasks/ workspace]
-    Lock[.skill-lock.json] -.->|provenance| SKILL
+    Agent[智能体运行时] -->|读取 name + description| SKILL[SKILL.md frontmatter]
+    SKILL -->|触发技能| Body[SKILL.md 主体]
+    Body -->|按需加载| Refs[references/*.md]
+    Body -->|调用| Scripts[scripts/*.py / *.mjs / *.sh]
+    Body -->|使用| Tmpl[templates/*]
+    Body -->|导入| Assets[assets/*]
+    Scripts -->|写入| Tasks[tasks/ 工作区]
+    Lock[.skill-lock.json] -.->|来源溯源| SKILL
 ```
 
 ### 三级渐进式加载
@@ -273,15 +273,25 @@ description: Does X. Use when user asks for Y or mentions Z.   # 必填：单句
 
 ### 可选字段
 
-`license` / `compatibility` / `allowed-tools` / `metadata` / `version` / `slug` / `homepage` / `changelog` / `authors` / `credentials` / `tags`。
+仓库里存在**两套并存的 schema**，不是同一套：
+
+| Schema | 校验器 | 允许的键 |
+|---|---|---|
+| 本地创作约定 | `skills/skill-creator/scripts/quick_validate.py` | `license` / `allowed-tools` / `metadata` |
+| 上游参考规范 | `npx -y skills-ref validate` | `license` / `compatibility` / `allowed-tools` / `metadata` |
+
+**优先取两者的交集**：`name` / `description` / `license` / `allowed-tools` / `metadata` —— 这样两个校验器都通过。
+
+- `compatibility`：**上游合法**，只有严格的本地校验器会报错。需要时可用，并在 PR 中说明。
+- `version` / `slug` / `homepage` / `changelog` / `authors` / `credentials` / `tags`：两个校验器都**不接受**，不要使用。
 
 ### 主体结构建议
 
 - `# Skill Name` 标题。
 - 顶部要有 `## When to use this skill` 或 `## Workflow`。
 - 命令式语气；说明能力 / 流程。
-- **< 500 行**；细节外移到 `references/`。
-- **不要**在技能目录内创建 `README.md` / `CHANGELOG.md` / `INSTALLATION.md` 等冗余文档。
+- **< 500 行**；面向 agent 的细节外移到 `references/`。
+- 技能目录内**可以**放 `README.md` / `CHANGELOG.md` / `LICENSE` / `CONTRIBUTING.md` / `INSTALLATION.md` 等项目文档 —— 每个技能都是一个独立、自包含的项目，工具链不禁止它们（`quick_validate.py` 只检查 frontmatter，`package_skill.py` 原样打包整个目录，`skills-ref validate` 对含这些文件的技能同样返回 `Valid skill`）。`SKILL.md` 始终是面向 agent 的入口。
 
 ### 命名
 
@@ -300,8 +310,8 @@ description: Does X. Use when user asks for Y or mentions Z.   # 必填：单句
 - [ ] 目录名与 `name` frontmatter 一致。
 - [ ] `description` 是「what + when」的单句。
 - [ ] `SKILL.md` 主体 < 500 行。
-- [ ] 技能目录内**没有** `README.md` / `CHANGELOG.md`。
-- [ ] Frontmatter 通过 `quick_validate.py` 校验。
+- [ ] 技能目录内允许存在 `README.md` / `CHANGELOG.md` / `LICENSE` 等项目文档。
+- [ ] Frontmatter 通过 `quick_validate.py` 校验，且只使用两个校验器都接受的键。
 - [ ] `tasks/` 目录没有未追踪的产物。
 - [ ] 本地跑过 `npx -y skills-ref validate skills/<name>`。
 
@@ -367,4 +377,4 @@ description: Does X. Use when user asks for Y or mentions Z.   # 必填：单句
 | React/Next 性能规则 | `skills/react-best-practices/rules/` |
 | 排查仓库协作问题 | `AGENTS.md` |
 
-— Happy hacking.
+— 玩得开心。
